@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Bookmark Delate
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col"></div>
+    <div class="col-12 col-xl-8 com-md-4">
+        <div class="alert alert-warning" role="alert">
+            Do you want to delete {{object}}?
+        </div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Delete Ok">
+        </form>
+    </div>
+    <div class="col"></div>
+</div>
+{% endblock %}

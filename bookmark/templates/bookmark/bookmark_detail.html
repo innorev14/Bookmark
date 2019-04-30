@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Bookmark Detail
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col"></div>
+    <div class="col-12 col-xl-8 com-md-4">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{object.site_name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted"><a href="{{object.url}}" target="_blank">{{object.url}}</a>
+                </h6>
+                <p class="card-text">{{object.contents}}</p>
+                <a href="{% url 'bookmark:update' object.id %}" class="btn btn-outline-warning">수정</a>
+                <a href="{% url 'bookmark:delete' object.id %}" class="btn btn-outline-danger">삭제</a>
+            </div>
+        </div>
+        <!--
+        {{object.id}}<br>
+        {{object.site_name}}<br>
+        <a href="{{object.url}}" target="_blank" class="btn btn-outline-primary">링크</a>
+        <a href="{% url 'bookmark:update' object.id %}" class="btn btn-outline-warning">수정</a>
+        <a href="{% url 'bookmark:delete' object.id %}" class="btn btn-outline-danger">삭제</a>
+        --!>
+    </div>
+    <div class="col"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+<!--//
+C - 객체를 생성 ->
+R - 단일 object
+U - 단일 object
+D - 단일 object
+L - 복수 객체 object_list
+
+CSS Framework :
+1. Bootstrap
+2. Flat UI
+3. Material Design Lite : Google - Android랑 디자인이 비슷하게
+
+//-->
+{% block title %}
+Bookmark List
+{% endblock %}
+
+
+{% block content %}
+<div class="row">
+    <div class="col"></div>
+    <div class="col-12 col-xl-8 com-md-4">
+        <div align="right"><a href="{% url 'bookmark:create' %}" class="btn btn-success">Add Bookmark</a></div><br>
+
+        {# bookmark 목록 출력하기 #}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Site Name</th>
+                <th scope="col">Link</th>
+                <th scope="col">Modify</th>
+                <th scope="col">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for object in object_list %}
+            <tr>
+                <td>{{object.id}}</td>
+                <td>
+                    <a href="{% url 'bookmark:detail' object.id %}">{{object.site_name}}</a>
+                </td>
+                <td><a href="{{object.url}}" target="_blank">링크이동</a></td>
+                <td><a href="{% url 'bookmark:update' object.id %}" class="btn btn-outline-warning">수정</a></td>
+                <td><a href="{% url 'bookmark:delete' object.id %}" class="btn btn-outline-danger">삭제</a></td>
+            </tr>
+            <!-- <a href="{% url 'bookmark:detail' object.id %}">{{object.id}} {{object.site_name}}</a> {{object.url}}<br> --!>
+
+            {% endfor %}
+            </tbody>
+        </table>
+        <div align="right"> <button type="button" class="btn btn-primary">
+            bookmark <span class="badge badge-light">4</span>
+    </button></div>
+    </div>
+    <div class="col"></div>
+</div>
+{% endblock %}
